@@ -61,9 +61,6 @@ async function getAutos() {
   }
 }
 
-
-
-
 // Configuración de Multer para manejar la carga de archivos
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -81,6 +78,20 @@ async function getAutos() {
   const { rows } = await pool.query(query);
   return rows;
 }
+
+router.post('/update', async (req, res) => {
+  const { id, marca, modelo, anio } = req.body;
+  try {
+    const query = 'UPDATE autos SET marca = $1, modelo = $2, anio = $3 WHERE id = $4';
+    const values = [marca, modelo, anio, id];
+    await pool.query(query, values);
+    res.redirect('/users/dashboard');
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+});
+
 
 // Obtener todos los autos
 module.exports = async (req, res) => {
@@ -187,13 +198,13 @@ router.put('/:id', async (req, res) => {
 });
 
 // Eliminar un auto
-router.delete('/:id', async (req, res) => {
-  const { id } = req.params;
+router.post('/delete', async (req, res) => {
+  const { id } = req.body;
   try {
     const query = 'DELETE FROM autos WHERE id = $1';
     const values = [id];
     await pool.query(query, values);
-    res.sendStatus(204);
+    res.redirect('/users/dashboard');
   } catch (error) {
     console.error(error);
     res.sendStatus(500);

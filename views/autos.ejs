@@ -47,37 +47,70 @@
           </div>
         </div>
       </nav>
-
-
-      <!-- ============================================-->
-      <h1>Lista de Autos</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Marca</th>
-            <th>Modelo</th>
-            <th>Año</th>
-            <th>Dueño ID</th>
-            <th>Foto</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% for (const auto of autos) { %>
-            <tr>
-              <td><%= auto.id %></td>
-              <td><%= auto.marca %></td>
-              <td><%= auto.modelo %></td>
-              <td><%= auto.año %></td>
-              <td><%= auto.dueño_id %></td>
-              <td><img src="img/ auto.foto %>" alt="Foto"></td>
-            </tr>
-          <% } %>
-        </tbody>
-      </table>
-      <!-- ============================================-->
-
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
-  </body>
-
-</html>
+      <body>
+        <!-- Main Content -->
+        <main class="main" id="top">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <h1 class="mb-5"> <img src="/img copy/icons/logo.png" alt="" width="40" /> Lista de Autos</h1>
+                <table class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Marca</th>
+                      <th>Modelo</th>
+                      <th>Año</th>
+                      <th>Dueño ID</th>
+                      <th>Foto</th>
+                      <th>Acción</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% for (const auto of autos) { %>
+                      <tr>
+                        <td><%= auto.id %></td>
+                        <td><%= auto.marca %></td>
+                        <td><%= auto.modelo %></td>
+                        <td><%= auto.anio %></td>
+                        <td><%= auto.dueno_id %></td>
+                        <td><img src="img/<%= auto.foto %>" alt="Foto" class="img-fluid" style="max-width: 100px;"></td>
+                        <td>
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-<%= auto.id %>">
+                            Ver imagen completa
+                          </button>
+                          <!-- Modal -->
+                          <div class="modal fade" id="modal-<%= auto.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Imagen completa</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <img src="img/<%= auto.foto %>" alt="Foto" class="img-fluid">
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+                
+              </div>
+            </div>
+          </div>
+        </main>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      </body>
+    </html>
+    
