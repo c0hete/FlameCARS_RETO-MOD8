@@ -42,6 +42,12 @@ router.get('/users/dashboard', ensureAuthenticated, async (req, res) => {
   }
 });
 
+router.get("/users/:userId/image/:imageId", async (req, res) => {
+  const { userId, imageId } = req.params;
+  const imagePath = path.join(__dirname, '..', 'public', 'img', imageId);
+  res.sendFile(imagePath);
+});
+
 async function getAutos() {
   const query = 'SELECT * FROM autos';
   const client = await pool.connect();
