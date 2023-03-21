@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/img copy/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img copy/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img copy/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="img copy/favicon.ico">
+    <link rel="manifest" href="img copy/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="img copy/favicons/mstile-150x150.png">
+    <title>FlameCARS <%= user.charAt(0).toUpperCase() + user.slice(1) %></title>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/css/theme.css" rel="stylesheet" />
+</head>
+<header>
+    <body id="page-top">
+  <main class="main" id="top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/"><img src="/img copy/icons/logo.png" alt="" width="30" /><span class="text-1000 fs-1 ms-2 fw-medium">Flame<span class="fw-bold">CARS</span></span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a type="button" class="btn btn-link text-1000 fw-medium order-1 order-lg-0" href="/autos">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a type="button" class="btn btn-link text-1000 fw-medium order-1 order-lg-0" href="/users/register"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/users/logout">Log out</a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    </header>
+        <!-- Navigation-->
+        <!-- 
+             <a class="nav-link" href="/users/logout">Cerrar sesión</a>
+         -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-block d-lg-none"><%= user.charAt(0).toUpperCase() + user.slice(1) %></span>
+                <span class="d-none d-lg-block">
+                    <img class="img-fluid img-profile rounded-circle mx-auto mb-2" 
+                         src="/users/<%= userId %>/image" alt="User Image">
+                  </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#perfil">Perfil</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#tusAutomoviles">Tus Automóviles</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#agregar">Agregar un nuevo Autómovil</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interests</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#eliminarAuto">Eliminar Automóvil</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- Perfil-->
+            <section class="resume-section" id="perfil">
+                <div class="resume-section-content">
+                    <h1 class="mb-0">
+                        <%= user.charAt(0).toUpperCase() + user.slice(1) %>
+                        <span class="text-primary"></span>
+                    </h1>
+                    <div class="subheading mb-5">
+                        3542 Berry Street · Cheyenne Wells, CO 80810 · (317) 585-8468 ·
+                        <a href="mailto:name@email.com">name@email.com</a>
+                    </div>
+
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Tus Automóviles-->
+            <section class="resume-section" id="tusAutomoviles">
+                <div class="container">
+                    <div class="row">
+                      <% for(let i = 0; i < autos.length; i++) { %>
+                        <div class="col-md-4">
+                          <div class="card mb-4">
+                            <img src="<%= autos[i].foto %>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title"><%= autos[i].marca %> <%= autos[i].modelo %> <%= autos[i].anio %></h5>
+                              <p class="card-text"><strong>ID:</strong> <%= autos[i].id %></p>
+                              <p class="card-text"><strong>Color:</strong> <%= autos[i].color %></p>
+                              <p class="card-text"><strong>Propietario:</strong> <%= autos[i].propietario %></p>
+                              <p class="card-text"><strong>Descripción:</strong> <%= autos[i].descripcion %></p>
+                            </div>
+                          </div>
+                        </div>
+                      <% } %>
+                    </div>
+                  </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Agregar Auto-->
+            <section class="resume-section" id="agregar">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Agregar un nuevo Autómovil</h2>
+                    <form action="/autos" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                          <label for="marca" class="form-label">Marca</label>
+                          <input type="text" class="form-control" id="marca" name="marca" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="modelo" class="form-label">Modelo</label>
+                          <input type="text" class="form-control" id="modelo" name="modelo" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="anio" class="form-label">Año</label>
+                          <input type="number" class="form-control" id="anio" name="anio" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="foto" class="form-label">Foto</label>
+                          <input type="file" class="form-control" id="foto" name="foto" accept="image/*" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                      </form>
+                      
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Skills-->
+            <section class="resume-section" id="skills">
+
+            </section>
+            <hr class="m-0" />
+            <!-- Interests-->
+            <section class="resume-section" id="interests">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Interests</h2>
+                    <p>Apart from being a web developer, I enjoy most of my time being outdoors. In the winter, I am an avid skier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain biking, free climbing, and kayaking.</p>
+                    <p class="mb-0">When forced indoors, I follow a number of sci-fi and fantasy genre movies and television shows, I am an aspiring chef, and I spend a large amount of my free time exploring the latest technology advancements in the front-end web development world.</p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Eliminar Auto-->
+            <section class="resume-section" id="eliminarAuto">
+
+            </section>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

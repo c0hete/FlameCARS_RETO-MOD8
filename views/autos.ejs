@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>FlameCARS </title>
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="/img copy/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img copy/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img copy/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="img copy/favicon.ico">
+    <link rel="manifest" href="img copy/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="img copy/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link href="/css/theme.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/"><img src="/img copy/icons/logo.png" alt="" width="30" /><span class="text-1000 fs-1 ms-2 fw-medium">Flame<span class="fw-bold">CARS</span></span></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+              <li>
+                <% if (user) { %>
+                <a type="button" class="btn btn-link text-1000 fw-medium order-1 order-lg-0" href="/users/dashboard">Perfil</a>
+                <% } %>
+              </li>
+              <li class="nav-item">
+                <a type="button" class="btn btn-link text-1000 fw-medium order-1 order-lg-0" href="/users/login">Sign in</a>
+              </li>
+              <li class="nav-item">
+                <a type="button" class="btn btn-link text-1000 fw-medium order-1 order-lg-0" href="/users/register">Sign Up</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+      <!-- ============================================-->
+      <h1>Lista de Autos</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Año</th>
+            <th>Dueño ID</th>
+            <th>Foto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (const auto of autos) { %>
+            <tr>
+              <td><%= auto.id %></td>
+              <td><%= auto.marca %></td>
+              <td><%= auto.modelo %></td>
+              <td><%= auto.año %></td>
+              <td><%= auto.dueño_id %></td>
+              <td><img src="img/ auto.foto %>" alt="Foto"></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <!-- ============================================-->
+
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+  </body>
+
+</html>
