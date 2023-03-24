@@ -4,27 +4,7 @@ const bcrypt = require("bcrypt");
 const path = require("path");
 const router = Router();
 const passport = require("passport");
-const multer = require("multer");
-
-//MULTER
-// Definir el almacenamiento para los archivos cargados
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/img");
-  },
-  filename: function (req, file, cb) {
-    cb(
-      null, 
-      file.fieldname +
-        "-" +
-        Date.now() +
-        "." +
-        file.originalname.split(".").pop()
-    ); // crear un nombre único para el archivo
-  },
-});
-// Configurar multer
-const upload = multer({ storage: storage });
+const upload = require('../config/multerConfig');
 
 // Middleware para verificar si el usuario está autenticado
 function isLoggedIn(req, res, next) {
