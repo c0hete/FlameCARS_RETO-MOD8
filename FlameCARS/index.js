@@ -7,10 +7,12 @@ const PORT = process.env.PORT || 4000;
 const initizalizePassport = require("./config/passportConfig");
 const userRoutes = require('./routes/usersRoutes');
 const autoRoutes = require('./routes/autosRoutes');
+const cors = require('cors');
 
 //initializations
 app.set('views', __dirname + '/views');
 app.use(express.static('public'));
+app.use(cors())
 
 initizalizePassport(passport);
 app.set('view engine', 'ejs')
