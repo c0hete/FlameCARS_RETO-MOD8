@@ -12,7 +12,14 @@ const cors = require('cors');
 //initializations
 app.set('views', __dirname + '/views');
 app.use(express.static('public'));
-app.use(cors())
+// Configurar el tipo MIME para los archivos CSS
+app.use('/css', express.static('public/css', {
+  setHeaders: (res, path) => {
+    if (path.endsWith('.css')) {
+      res.setHeader('Content-Type', 'text/css');
+    }
+  }
+}));
 
 initizalizePassport(passport);
 app.set('view engine', 'ejs')
