@@ -38,7 +38,7 @@ Usage
 Code Explanation
 Server Configuration
 
-The ./server.js file configures the server by requiring necessary packages and initializing the Express application.
+The ./index.js file configures the server by requiring necessary packages and initializing the Express application.
 View Configuration
 
 The application uses the EJS template engine and the express-ejs-layouts package to render views. The app.set() method is used to set the views directory and engine.
@@ -47,7 +47,7 @@ Session Configuration
 The application uses the express-session package to manage user sessions. The session is configured with a secret key and options to control session behavior.
 Passport Configuration
 
-Passport is used to handle user authentication. The passportConfig.js file sets up a local strategy for authenticating users based on email and password. The ./server.js file initializes and configures Passport.
+Passport is used to handle user authentication. The passportConfig.js file sets up a local strategy for authenticating users based on email and password. The ./index.js file initializes and configures Passport.
 Routing
 
 The application has several routes for registering, logging in, logging out, and accessing the dashboard. The routes use the appropriate methods (GET or POST) and render the appropriate views or redirect to other routes.
@@ -110,7 +110,7 @@ Uso
 Explicación del código
 Configuración del servidor
 
-El archivo ./server.js configura el servidor requiriendo los paquetes necesarios e inicializando la aplicación Express.
+El archivo ./index.js configura el servidor requiriendo los paquetes necesarios e inicializando la aplicación Express.
 Configuración de la vista
 
 La aplicación utiliza el motor de plantillas EJS y el paquete express-ejs-layouts para renderizar las vistas. El método app.set() se utiliza para establecer el directorio de vistas y el motor.
@@ -119,7 +119,7 @@ Configuración de la sesión
 La aplicación utiliza el paquete express-session para gestionar las sesiones de usuario. La sesión se configura con una clave secreta y opciones para controlar el comportamiento de la sesión.
 Configuración de Passport
 
-Passport se utiliza para gestionar la autenticación de usuarios. El archivo passportConfig.js configura una estrategia local para autenticar usuarios basada en correo electrónico y contraseña. El archivo ./server.js inicializa y configura Passport.
+Passport se utiliza para gestionar la autenticación de usuarios. El archivo passportConfig.js configura una estrategia local para autenticar usuarios basada en correo electrónico y contraseña. El archivo ./index.js inicializa y configura Passport.
 Rutas
 
 La aplicación tiene varias rutas para registrarse, iniciar sesión, cerrar sesión y acceder al panel de control. Las rutas utilizan los métodos apropiados (GET o POST) y renderizan las vistas apropiadas o redirigen a otras rutas.
