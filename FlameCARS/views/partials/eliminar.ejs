@@ -1,0 +1,39 @@
+<section class="resume-section" id="eliminar">
+    <div class="container">
+      <h1 class="text-center mb-5"> ELIMINA AUTOMÓVIL DE TU REGISTRO</h1>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Año</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for (let i = 0; i < autos.length; i++) { %>
+                <tr>
+                  <td><%= autos[i].id %></td>
+                  <td><%= autos[i].marca %></td>
+                  <td><%= autos[i].modelo %></td>
+                  <td><%= autos[i].anio %></td>
+                  <td>
+                    <form action="/autos/delete" method="POST" class="d-inline">
+                      <input type="hidden" name="id" value="<%= autos[i].id %>">
+                      <button type="submit" class="btn btn-danger float-right">
+                        <span>&times;</span>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  
+  </section>

@@ -1,27 +1,27 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/"><img src="/img_copy/icons/logo.png" alt="" width="30" /><span class="text-1000 fs-1 ms-2 fw-medium">Flame<span class="fw-bold">CARS</span></span></a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top text-dark">
+  <div class="container">
+      <a class="navbar-brand" href="/"><img src="/img_copy/icons/logo.png" alt="" width="30" /><span class="text-dark fs-4 ms-2 fw-bold">Flame<span class="text-dark">CARS</span></span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-          <li>
-            <% if (user) { %>
-            <a type="button" class="btn btn-link text-1000 fw-medium order-1 order-lg-0" href="/users/dashboard">Perfil</a>
-            <% } %>
-          </li>
-          <li class="nav-item">
-            <a type="button" class="btn btn-link text-1000 fw-medium order-1 order-lg-0" href="/autos">Listado de automóviles</a>
-          </li>
-          <li class="nav-item">
-            <a type="button" class="btn btn-link text-1000 fw-medium order-1 order-lg-0" href="/users/login">Ingresa</a>
-          </li>
-          <li class="nav-item">
-            <a type="button" class="btn btn-link text-1000 fw-medium order-1 order-lg-0" href="/users/register">Registrate</a>
-          </li>
+            <li class="nav-item">
+                <% if (user) { %>
+                <a type="button" class="nav-link text-dark fw-bold" href="/users/dashboard">Perfil</a>
+                <% } %>
+            </li>
+            <li class="nav-item">
+                <a type="button" class="nav-link text-dark fw-bold" href="/autos">Listado de automóviles</a>
+            </li>
+            <li class="nav-item">
+                <a type="button" class="nav-link text-dark fw-bold" href="/users/login">Ingresa</a>
+            </li>
+            <li class="nav-item">
+                <a type="button" class="nav-link text-dark fw-bold" href="/users/register">Registrate</a>
+            </li>
         </ul>
-      </div>
     </div>
-  </nav>
-  
+    
+  </div>
+</nav>

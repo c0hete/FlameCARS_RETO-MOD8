@@ -2,9 +2,9 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 100vh; /* Esta propiedad asegura que la barra de navegación tenga la altura completa de la pantalla */
-  width: 19rem;  /* Esta propiedad puede ajustarse a la medida que prefieras */
-  overflow: auto; /* Esta propiedad permite que la barra de navegación tenga su propio scroll si el contenido excede la altura de la pantalla */
+  height: 100vh;
+  width: 19rem;
+  overflow: auto;
 }
 
 #sidebar-container {
@@ -16,17 +16,21 @@
   overflow: auto;
 }
 
+.content-container {
+  display: flex;
+  flex-direction: column;
+}
 
 .img-profile {
   margin-top: 120px;
-  width:250px;  /* Ajusta al tamaño que necesites */
-  height: 180x; /* Ajusta al tamaño que necesites */
-  object-fit: cover; /* Esto asegura que la imagen se ajuste correctamente */
+  width:250px;
+  height: 180px;
+  object-fit: cover;
 }
 
 #content-container {
   width: 100%;
-  margin-left: 0; /* Añade margen a la izquierda para que el contenido no se superponga con la barra de navegación */
+  margin-left: 0;
 }
 
 .menu .nav-link {

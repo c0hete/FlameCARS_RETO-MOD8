@@ -1,0 +1,40 @@
+<section class="resume-section" id="editar">
+    <div><h1 class=" mt-5">    Edita los datos de tu automóvil</h1>
+      <div class="container " styles="min-width: 10rem">
+    <div class="row">
+      <% for (let i = 0; i < autos.length; i++) { %>
+        <div class="col-4 md-3">
+          <div class="card my-3">
+            <div class="card-header">
+              Auto #<%= i + 1 %>
+            </div>
+            <div class="card-body">
+              <form action="/autos/update" method="POST">
+                <input type="hidden" name="id" value="<%= autos[i].id %>">
+                <div class="form-group">
+                  <label for="id">ID:</label>
+                  <input type="text" class="form-control" id="id" value="<%= autos[i].id %>" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="marca">Marca:</label>
+                  <input type="text" class="form-control" id="marca" name="marca" value="<%= autos[i].marca %>">
+                </div>
+                <div class="form-group">
+                  <label for="modelo">Modelo:</label>
+                  <input type="text" class="form-control" id="modelo" name="modelo" value="<%= autos[i].modelo %>">
+                </div>
+                <div class="form-group">
+                  <label for="anio">Año:</label>
+                  <input type="number" class="form-control" id="anio" name="anio" value="<%= autos[i].anio %>">
+                </div>
+                <button type="submit" class="btn btn-danger mt-3 w-100">Actualizar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+</div>
+  </section>

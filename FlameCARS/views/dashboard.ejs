@@ -3,6 +3,12 @@
 
 <head>
     <%- include('./partials/head.ejs') %>
+    <style>
+    .content-container {
+        display: flex;
+        flex-direction: column;
+    }
+    </style>
     <link href="/css/styles.css" rel="stylesheet" />
 </head>
 
@@ -12,181 +18,94 @@
     </header>
 
     <main class="main" id="top">
-        <div class="d-flex">
-            <div id="sidebar-container" class="bg-danger">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                    <span class="d-block d-lg-none ml-5"><%= user.charAt(0).toUpperCase() + user.slice(1) %></span>
-                    <img src="/users/<%= userId %>/image" class=" img-profile rounded-circle mx-auto mb-2" alt="Profile Picture">
-                </a>
-                <div class="menu d-flex flex-column align-items-center justify-content-center">
-                    <a href="#tusAutomoviles" class="nav-link text-light my-2 text-center">Tus Automóviles</a>
-                    <a href="#" class="nav-link text-light my-2 text-center">Agregar un nuevo Autómovil</a>
-                    <a href="#" class="nav-link text-light my-2 text-center">Modifica tu Automóvil</a>
-                    <a href="#" class="nav-link text-light my-2 text-center">Eliminar Automóvil</a>
-                </div>
-            </div>
-            <div id="content-container">
-              <h1 class="mb-0"><%= user.charAt(0).toUpperCase() + user.slice(1) %></h1>
-              <br>
-              <hr class="m-0" />
-            <!-- Tus Automóviles-->
-            <section class="resume-section" id="tusAutomoviles">
-                <div class="container">
-                  <h1>Tus automóviles</h1>
-                    <div class="row">
-                      <% for(let i = 0; i < autos.length; i++) { %>
-                        <div class="col-md-4">
-                          <div class="card mb-4">
-                            <img src="/autos/<%= autos[i].id %>/image" class="card-img-top" alt="...">
-                            <!-- Button to open the modal -->
-<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-<%= autos[i].id %>">
-  Ver imagen completa
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="modal-<%= autos[i].id %>" tabindex="-1" aria-labelledby="modalLabel-<%= autos[i].id %>" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalLabel-<%= autos[i].id %>"><%= autos[i].marca %> <%= autos[i].modelo %> <%= autos[i].anio %></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <img src="/autos/<%= autos[i].id %>/image" class="img-fluid" alt="...">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="card-body">
-  <h5 class="card-title"> Datos </h5>
-  <p class="card-text"><strong>ID:</strong> <%= autos[i].id %></p>
-  <p class="card-text"><strong>Marca:</strong> <%= autos[i].marca %></p>
-  <p class="card-text"><strong>Modelo:</strong> <%= autos[i].modelo %></p>
-  <p class="card-text"><strong>Año:</strong> <%= autos[i].anio %></p>
-</div>
-</div>
-</div>
-<% } %>
-</div>
-</div>
-
-            </section>
-            <hr class="m-0" />
-            <!-- Agregar Auto-->
-            <section class="resume-section" id="agregar">
-                <div class="resume-section-content">
-                    <h2 class="mb-5">Agregar un nuevo Autómovil</h2>
-                    <form action="/autos" method="POST" enctype="multipart/form-data">
-                        <div class="mb-3">
-                          <label for="marca" class="form-label">Marca</label>
-                          <input type="text" class="form-control" id="marca" name="marca" required>
-                        </div>
-                        <div class="mb-3">
-                          <label for="modelo" class="form-label">Modelo</label>
-                          <input type="text" class="form-control" id="modelo" name="modelo" required>
-                        </div>
-                        <div class="mb-3">
-                          <label for="anio" class="form-label">Año</label>
-                          <input type="number" class="form-control" id="anio" name="anio" required>
-                        </div>
-                        <div class="mb-3">
-                          <label for="foto" class="form-label">Foto</label>
-                          <input type="file" class="form-control" id="foto" name="foto" accept="image/*" required>
-                        </div>
-                        <button type="submit" class="btn btn-danger">Guardar</button>
-                      </form>
-                      
-                </div>
-            </section>
-            <hr class="m-0" />
-            <!--Editar-->
-            
-            <section class="resume-section" id="modificar">
-              <div><h1 class=" mt-5">    Edita los datos de tu automóvil</h1>
-                <div class="container " styles="min-width: 10rem">
-              <div class="row">
-                <% for (let i = 0; i < autos.length; i++) { %>
-                  <div class="col-4 md-3">
-                    <div class="card my-3">
-                      <div class="card-header">
-                        Auto #<%= i + 1 %>
-                      </div>
-                      <div class="card-body">
-                        <form action="/autos/update" method="POST">
-                          <input type="hidden" name="id" value="<%= autos[i].id %>">
-                          <div class="form-group">
-                            <label for="id">ID:</label>
-                            <input type="text" class="form-control" id="id" value="<%= autos[i].id %>" readonly>
-                          </div>
-                          <div class="form-group">
-                            <label for="marca">Marca:</label>
-                            <input type="text" class="form-control" id="marca" name="marca" value="<%= autos[i].marca %>">
-                          </div>
-                          <div class="form-group">
-                            <label for="modelo">Modelo:</label>
-                            <input type="text" class="form-control" id="modelo" name="modelo" value="<%= autos[i].modelo %>">
-                          </div>
-                          <div class="form-group">
-                            <label for="anio">Año:</label>
-                            <input type="number" class="form-control" id="anio" name="anio" value="<%= autos[i].anio %>">
-                          </div>
-                          <button type="submit" class="btn btn-danger mt-3 w-100">Actualizar</button>
-                        </form>
-                      </div>
+        <%- include('./partials/navbar_lateral.ejs') %>
+        <div id="content-container" class="content-container">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="mb-0"><%= user.charAt(0).toUpperCase() + user.slice(1) %></h1>
+                        <br>
+                        <hr class="m-0" />
                     </div>
-                  </div>
-                <% } %>
-              </div>
-            </div>
-          </div>
-        </div>
-            </section>
-            <hr class="m-0" />
-            <!-- Eliminar Auto-->
-            <section class="resume-section" id="eliminarAuto">
-              <div class="container">
-                <h1 class="text-center mb-5"> ELIMINA AUTOMÓVIL DE TU REGISTRO</h1>
-                <div class="row justify-content-center">
-                  <div class="col-md-8">
-                    <table class="table table-bordered">
-                      <thead>
-                        <tr>
-                          <th scope="col">ID</th>
-                          <th scope="col">Marca</th>
-                          <th scope="col">Modelo</th>
-                          <th scope="col">Año</th>
-                          <th scope="col"></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <% for (let i = 0; i < autos.length; i++) { %>
-                          <tr>
-                            <td><%= autos[i].id %></td>
-                            <td><%= autos[i].marca %></td>
-                            <td><%= autos[i].modelo %></td>
-                            <td><%= autos[i].anio %></td>
-                            <td>
-                              <form action="/autos/delete" method="POST" class="d-inline">
-                                <input type="hidden" name="id" value="<%= autos[i].id %>">
-                                <button type="submit" class="btn btn-danger float-right">
-                                  <span>&times;</span>
-                                </button>
-                              </form>
-                            </td>
-                          </tr>
-                        <% } %>
-                      </tbody>
-                    </table>
-                  </div>
                 </div>
-              </div>
-            
-            </section>
+
+          <!-- Tus Automóviles-->
+  <section class="resume-section" id="tusAutomoviles">
+    <div class="container">
+        <h1>Tus automóviles</h1>
+        <div class="row">
+            <% for(let i = 0; i < autos.length; i++) { %>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="/autos/<%= autos[i].id %>/image" class="card-img-top" alt="...">
+                        <!-- Button to open the modal -->
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-<%= autos[i].id %>">
+                            Ver imagen completa
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal-<%= autos[i].id %>" tabindex="-1" aria-labelledby="modalLabel-<%= autos[i].id %>" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalLabel-<%= autos[i].id %>"><%= autos[i].marca %> <%= autos[i].modelo %> <%= autos[i].anio %></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="/autos/<%= autos[i].id %>/image" class="img-fluid" alt="...">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <h5 class="card-title"> Datos </h5>
+                            <p class="card-text"><strong>ID:</strong> <%= autos[i].id %></p>
+                            <p class="card-text"><strong>Marca:</strong> <%= autos[i].marca %></p>
+                            <p class="card-text"><strong>Modelo:</strong> <%= autos[i].modelo %></p>
+                            <p class="card-text"><strong>Año:</strong> <%= autos[i].anio %></p>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
         </div>
-      </div>
-        <%- include('./partials/scripts.ejs') %>
-    </body>
+    </div>
+</section>
+
+                <!-- Agregar Auto-->
+                <div class="row">
+                    <div class="col-12">
+                        <%- include('./partials/agregar.ejs') %>
+                        <hr class="m-0" />
+                    </div>
+                </div>
+
+                <!--Editar-->
+                <div class="row">
+                    <div class="col-12">
+                        <%- include('./partials/editar.ejs') %>
+                        <hr class="m-0" />
+                    </div>
+                </div>
+
+                <!-- Eliminar Auto-->
+                <div class="row">
+                    <div class="col-12">
+                        <%- include('./partials/eliminar.ejs') %>
+                        <hr class="m-0" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <%- include('./partials/scripts.ejs') %>
+</body>
+
 </html>
+  

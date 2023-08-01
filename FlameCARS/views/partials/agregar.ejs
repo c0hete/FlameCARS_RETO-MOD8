@@ -1,0 +1,26 @@
+<hr class="m-0" />
+<section class="resume-section" id="agregar">
+    <div class="resume-section-content">
+        <h2 class="mb-5">Agregar un nuevo Autómovil</h2>
+        <form action="/autos" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="marca" class="form-label">Marca</label>
+              <input type="text" class="form-control" id="marca" name="marca" required>
+            </div>
+            <div class="mb-3">
+              <label for="modelo" class="form-label">Modelo</label>
+              <input type="text" class="form-control" id="modelo" name="modelo" required>
+            </div>
+            <div class="mb-3">
+              <label for="anio" class="form-label">Año</label>
+              <input type="number" class="form-control" id="anio" name="anio" required>
+            </div>
+            <div class="mb-3">
+              <label for="foto" class="form-label">Foto</label>
+              <input type="file" class="form-control" id="foto" name="foto" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-danger">Guardar</button>
+          </form>
+          
+    </div>
+</section>
