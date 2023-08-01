@@ -1,44 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FlameCARS </title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/img_copy/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img_copy/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img_copy/favicon-16x16.png">
-    <link rel="shortcut icon" type="image/x-icon" href="img_copy/favicon.ico">
-    <link rel="manifest" href="img_copy/favicons/manifest.json">
-    <meta name="msapplication-TileImage" content="img_copy/favicons/mstile-150x150.png">
-    <meta name="theme-color" content="#ffffff">
-    <link href="/css/theme.css" rel="stylesheet" />
+    <%- include('./partials/head.ejs') %>
   </head>
   <body>
     <main class="main" id="top">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/"><img src="/img_copy/icons/logo.png" alt="" width="30" /><span class="text-1000 fs-1 ms-2 fw-medium">Flame<span class="fw-bold">CARS</span></span></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-              <li>
-                <% if (user) { %>
-                <a type="button" class="btn btn-link text-1000 fw-medium order-1 order-lg-0" href="/users/dashboard">Perfil</a>
-                <% } %>
-              </li>
-              <li class="nav-item">
-                <a type="button" class="btn btn-link text-1000 fw-medium order-1 order-lg-0" href="/users/login">Sign in</a>
-              </li>
-              <li class="nav-item">
-                <a type="button" class="btn btn-link text-1000 fw-medium order-1 order-lg-0" href="/users/register">Sign Up</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <%- include('./partials/header.ejs') %>
       <body>
         <!-- Main Content -->
         <main class="main" id="top">
@@ -82,9 +49,8 @@
             </div>
           </div>
         </main>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <%- include('./partials/scripts.ejs') %>
+
       </body>
     </html>
     
